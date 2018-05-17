@@ -44,6 +44,10 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 func main() {
 	port := os.Getenv("PORT")
 
+	if port == "" {
+		port = "8000"
+	}
+
 	http.HandleFunc("/", serveHome)
 
 	http.HandleFunc("/ws", handleConnections)

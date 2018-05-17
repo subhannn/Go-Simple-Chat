@@ -15,7 +15,7 @@ new Vue({
         var self = this;
         var user_chat = Cookies.get('user_chat')
 
-        this.ws = new WebSocket('ws://' + window.location.host + '/ws');
+        this.ws = new WebSocket('wss://' + window.location.host + '/ws');
         this.ws.onopen = function(){
             if(typeof user_chat == 'undefined'){
                 $('#registerModal').modal({
