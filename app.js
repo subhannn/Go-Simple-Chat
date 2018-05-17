@@ -15,7 +15,11 @@ new Vue({
         var self = this;
         var user_chat = Cookies.get('user_chat')
 
-        this.ws = new WebSocket('wss://' + window.location.host + '/ws');
+        if (location.protocol != 'https:'){
+            this.ws = new WebSocket('ws://' + window.location.host + '/ws');
+        }else{
+            this.ws = new WebSocket('wss://' + window.location.host + '/ws');
+        }
         this.ws.onopen = function(){
             if(typeof user_chat == 'undefined'){
                 $('#registerModal').modal({

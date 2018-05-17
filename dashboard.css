@@ -102,6 +102,7 @@ h1 {
     border: none;
     padding: 5px;
     width: 94%;
+    outline: -webkit-focus-ring-color auto 5px;
 }
 
 .sender{
