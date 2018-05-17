@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"github.com/gorilla/websocket"
 	"strings"
+	"os"
 )
 
 var clients = make(map[*websocket.Conn]string)
@@ -41,14 +42,16 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
+
 	http.HandleFunc("/", serveHome)
 
 	http.HandleFunc("/ws", handleConnections)
 
 	go handleMessages()
 
-	log.Println("http server started on :8000")
-	err := http.ListenAndServe(":5000", nil)
+	log.Println("http server started on :", port)
+	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
