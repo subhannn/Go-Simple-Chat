@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <a class="navbar-brand" href="#">Simple Chat GoLang</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">&nbsp;</ul>
+        <div class="form-inline mt-2 mt-md-0">
+            <button type="button" class="btn btn-outline-danger my-2 my-sm-0" id="logout" style="display: none;">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" id="app">
+    <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item user broadcast">
+                    <a class="nav-link active user_online" href="#" data-channel="broadcast">Broadcast<span class="unread" style="display:none;">0</span></a>
+                </li>
+            </ul>
+            <h6>Users</h6>
+            <ul class="nav nav-pills flex-column" id="listUser">
+            </ul>
+        </nav>
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+            <div class="container-message">
+                <ul id="container-msg" data-msg-channel="broadcast">
+                </ul>
+            </div>
+            <div class="message">
+                <form id="submitMessage" @submit.prevent="send" autocomplete="off">
+                    <input type="text" name="message" />
+                    <button class="send" type="submit">send</button>
+                </form>
+            </div>
+        </main>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="registerForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModal">Register Chat</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="username" class="form-control" id="username" placeholder="Enter Username">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script type="text/javascript" src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="https://unpkg.com/vue@2.1.3/dist/vue.min.js"></script>
+<script type="text/javascript" src="store.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
