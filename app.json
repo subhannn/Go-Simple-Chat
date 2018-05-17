@@ -1,0 +1,11 @@
+{
+  "name": "Simple Chat With Go Language",
+  "description": "Simple Chat App",
+  "keywords": [
+    "chat",
+    "go",
+    "simple"
+  ],
+  "website": "https://github.com/subhannn/Go-Simple-Chat",
+  "repository": "https://github.com/subhannn/Go-Simple-Chat"
+}
