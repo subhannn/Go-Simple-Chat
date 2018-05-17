@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
 	"github.com/gorilla/websocket"
+	"strings"
 )
 
 var clients = make(map[*websocket.Conn]string)
@@ -26,10 +26,22 @@ type Message struct {
 	Time	int `json:"time"`
 }
 
+func serveHome(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		//http.Error(w, "Not found", http.StatusNotFound)
+		http.ServeFile(w, r, strings.Replace(r.URL.Path, "/", "", 1))
+		return
+	}
+	if r.Method != "GET" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}else{
+		http.ServeFile(w, r, "index.html")
+	}
+}
+
 func main() {
-	// Create a simple file server
-	fs := http.FileServer(http.Dir("public"))
-	http.Handle("/", fs)
+	http.HandleFunc("/", serveHome)
 
 	http.HandleFunc("/ws", handleConnections)
 
